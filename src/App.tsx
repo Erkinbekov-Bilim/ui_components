@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import Modal from './UI/Modal/Modal';
 import Button from './UI/Button/Button';
+import Alert from './UI/Alert/Alert';
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const onCloseModal = (): void => {
     setShowModal(false);
@@ -50,6 +52,22 @@ const App = () => {
     );
   }
 
+  const closeAlert = (): void => {
+    setShowAlert(false);
+  };
+
+  let alert: React.ReactNode = null;
+
+  if (showAlert) {
+    alert = (
+      <>
+        <Alert type="danger" onDismiss={closeAlert} show={showAlert}>
+          Hello
+        </Alert>
+      </>
+    );
+  }
+
   return (
     <>
       <Button
@@ -58,6 +76,13 @@ const App = () => {
         className="rounded-4"
       />
       {modal}
+
+      <Button
+        text="Alert"
+        onClick={() => setShowAlert(true)}
+        className="rounded-4"
+      />
+      {alert}
     </>
   );
 };

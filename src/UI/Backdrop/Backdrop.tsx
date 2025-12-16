@@ -2,7 +2,7 @@ import React from 'react';
 
 interface IBackdropProps extends React.PropsWithChildren {
   show: boolean;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 const Backdrop: React.FC<IBackdropProps> = ({ show, onClose }) => {

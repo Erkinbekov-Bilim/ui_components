@@ -1,0 +1,17 @@
+.btn-close-alert {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.btn-close-alert::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  display: block;
+  top: 0;
+  left: 0;
+  background: url('../../assets/icons/ic-close.svg') no-repeat center;
+}
