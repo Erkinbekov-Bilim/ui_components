@@ -20,7 +20,7 @@ const Modal: React.FC<IModalProps> = ({
       <Backdrop show={show} onClose={onClose} />
 
       <div
-        className="modal show"
+        className="modal show "
         style={{
           display: show ? 'block' : 'none',
           width: '500px',
@@ -32,7 +32,7 @@ const Modal: React.FC<IModalProps> = ({
         }}
       >
         <div className="modal-dialog">
-          <div className="modal-content">
+          <div className="modal-content rounded-4">
             <div className="modal-header">
               <h1 className="modal-title fs-5 text-center">{title}</h1>
 
