@@ -1,5 +1,10 @@
 import React from 'react';
 import './Button.css';
+import {
+  motion,
+  type TargetAndTransition,
+  type VariantLabels,
+} from 'framer-motion';
 
 interface IButtonProps extends React.PropsWithChildren {
   type?: 'submit' | 'reset' | 'button';
@@ -9,6 +14,8 @@ interface IButtonProps extends React.PropsWithChildren {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
   title?: string;
+  whileHover?: VariantLabels | TargetAndTransition;
+  whileTap?: VariantLabels | TargetAndTransition;
 }
 
 const Button: React.FC<IButtonProps> = ({
@@ -19,18 +26,22 @@ const Button: React.FC<IButtonProps> = ({
   onClick,
   title,
   children,
+  whileHover,
+  whileTap,
 }) => {
   return (
-    <button
+    <motion.button
       type={type}
       className={className}
       style={style}
       onClick={onClick}
       title={title}
+      whileHover={whileHover}
+      whileTap={whileTap}
     >
       {text}
       {children}
-    </button>
+    </motion.button>
   );
 };
 
