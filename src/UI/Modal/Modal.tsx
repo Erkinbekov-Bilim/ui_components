@@ -1,36 +1,50 @@
 import React from 'react';
 import Backdrop from '../Backdrop/Backdrop';
+import Button from '../Button/Button';
+import './Modal.css';
 
 interface IModalProps extends React.PropsWithChildren {
   show: boolean;
   title: string;
+  onClose: () => void;
 }
 
-const Modal: React.FC<IModalProps> = ({ show = false, title, children }) => {
+const Modal: React.FC<IModalProps> = ({
+  show = false,
+  title,
+  onClose,
+  children,
+}) => {
   return (
     <>
-      <Backdrop show={show} />
+      <Backdrop show={show} onClose={onClose} />
 
       <div
-        className="modal show rounded-5"
+        className="modal show"
         style={{
           display: show ? 'block' : 'none',
           width: '500px',
-          height: '300px',
-          position: 'absolute',
+          height: 'auto',
+          position: 'fixed',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          backgroundColor: 'white',
         }}
       >
-        <div className="modal dialog">
+        <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h2 className="modal-title fs-5 text-center">{title}</h2>
+              <h1 className="modal-title fs-5 text-center">{title}</h1>
+
+              <div className="position-absolute mt-2 top-0 end-0">
+                <Button
+                  onClick={onClose}
+                  className="btn-close-modal border-0"
+                />
+              </div>
             </div>
 
-            <div className="mx-2">{children}</div>
+            <div className="p-3">{children}</div>
           </div>
         </div>
       </div>
